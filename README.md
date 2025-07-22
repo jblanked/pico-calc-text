@@ -1,9 +1,9 @@
 # pico-calc-text
-This is a simple Arduino IDE to read the keyboard input from the Pico Calc. It utilizes the keyboard and southbridge libraries from [Blair Leduc's picocalc-text-starter](https://github.com/BlairLeduc/picocalc-text-starter)
+This is a simple Arduino IDE library to read the keyboard input from the Pico Calc. It utilizes the keyboard and southbridge libraries from Blair Leduc's [picocalc-text-starter](https://github.com/BlairLeduc/picocalc-text-starter).
 
 ## Install
 1. Install the Arduino IDE from https://www.arduino.cc/en/software.
-2. Download this repository as a .zip
+2. Download this repository as a .zip file: https://github.com/jblanked/pico-calc-text/archive/refs/heads/master.zip
 3. Open up the .zip and double-click the pico-calc-text.ino file to open it up in Arduino IDE.
 4. Open the Arduino IDE you downloaded earlier, go to Preferences/Settings, and add the following URL to the `Additional Boards Manager URLs` field: `https://github.com/earlephilhower/arduino-pico/releases/download/4.6.0/package_rp2040_index.json`. Click `OK`.
 5. In `Boards Manager`, search for `rp2040` and install the `Raspberry Pi Pico/RP2040/RP2350` package.
