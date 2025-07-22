@@ -1,7 +1,7 @@
 #include "PicoCalcKeyboard.h"
 
 // Create keyboard instance
-PicoCalcKeyboard keyboard;
+PicoCalcKeyboard *keyboard;
 
 void readline(char *buffer, size_t size)
 {
@@ -9,7 +9,7 @@ void readline(char *buffer, size_t size)
     while (true)
     {
         // Wait for a key from the PicoCalc keyboard using the C++ class
-        char ch = keyboard.read();
+        char ch = keyboard->read();
 
         if (ch == 0x04) // Ctrl+D to debug
         {
@@ -42,10 +42,7 @@ void setup()
     Serial.begin();
     delay(5000);
     Serial.println("PicoCalc Keyboard C++ Library Test");
-
-    // Initialize the keyboard using the C++ class
-    keyboard.begin();
-
+    keyboard = new PicoCalcKeyboard();
     Serial.println("Keyboard initialized!");
 }
 
@@ -59,7 +56,7 @@ void loop()
 
     // Demonstrate async checking
     Serial.println("Waiting for input...");
-    while (!keyboard.available())
+    while (!keyboard->available())
     {
         // Do other work here while waiting for keys
         delay(10);
