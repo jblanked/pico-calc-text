@@ -11,8 +11,25 @@ void readline(char *buffer, size_t size)
         // Wait for a key from the PicoCalc keyboard using the C++ class
         char ch = keyboard->read();
 
-        if (ch == 0x04) // Ctrl+D to debug
-        {
+        // Arrow key codes from keyboard.h
+        if (ch == (char)0xB4)
+        { // KEY_LEFT
+            Serial.println("[Left arrow pressed]");
+        }
+        else if (ch == (char)0xB7)
+        { // KEY_RIGHT
+            Serial.println("[Right arrow pressed]");
+        }
+        else if (ch == (char)0xB5)
+        { // KEY_UP
+            Serial.println("[Up arrow pressed]");
+        }
+        else if (ch == (char)0xB6)
+        { // KEY_DOWN
+            Serial.println("[Down arrow pressed]");
+        }
+        else if (ch == 0x04)
+        { // Ctrl+D to debug
             Serial.println("Entering debug mode...\n");
             __breakpoint();
         }
@@ -22,14 +39,14 @@ void readline(char *buffer, size_t size)
             Serial.println();
             break; // End of line
         }
-        else if ((ch == 0x08 || ch == 0x7F) && index > 0) // Backspace or Delete
-        {
+        else if ((ch == 0x08 || ch == 0x7F) && index > 0)
+        { // Backspace or Delete
             index--;
             buffer[index] = '\0';  // Remove last character
             Serial.print("\b \b"); // Erase the last character
         }
-        else if (ch >= 0x20 && ch < 0x7F && index < size - 1) // Printable characters
-        {
+        else if (ch >= 0x20 && ch < 0x7F && index < size - 1)
+        { // Printable characters
             buffer[index++] = ch;
             Serial.print(ch); // Echo the character to serial
         }
